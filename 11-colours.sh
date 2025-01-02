@@ -31,7 +31,7 @@ then
     VALIDATE $? "Mysql Installation"
 
 else
-    echo -e " Mysql Installed $Yalready"
+    echo -e " Mysql Installed $Y already"
 fi
 
 ###############
