@@ -53,3 +53,20 @@ fi
 # else
 #     echo "MySQL is already ... INSTALLED"
 # fi
+
+
+
+dnf list installed git
+
+if [ $? -ne 0 ]
+then    
+    dnf install git -y
+    if [ $? -ne 0 ]
+    then    
+        echo " Git install failure"
+    else
+        echo " Git install success"
+    fi
+else
+    echo " Git install already"
+fi
