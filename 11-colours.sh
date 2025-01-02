@@ -1,14 +1,17 @@
 #!/bin/bash
 
 USERID=$(id -u)
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 is failue"
+        echo -e "$2 is $R failue"
         exit 1
     else    
-        echo "$2 is success"
+        echo -e "$2 is $G success"
     fi
 
 }
@@ -28,7 +31,7 @@ then
     VALIDATE $? "Mysql Installation"
 
 else
-    echo " Mysql Installed already"
+    echo -e " Mysql Installed $Yalready"
 fi
 
 ###############
