@@ -1,6 +1,6 @@
 #!/binbash
 
-MOVIES=("RRR""DEVARA""PUSHPA")
+MOVIES=("RRR" "DEVARA" "PUSHPA")
 
 echo "First Movie : ${MOVIES[0]}"
 
