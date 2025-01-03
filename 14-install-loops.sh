@@ -31,16 +31,19 @@ then
     exit 1
 fi
 
-dnf list installed mysql &>>$LOG_FILE_NAME
+# Loops execution starts
 
-if [ $? -ne 0 ]
-then
-    dnf install mysql -y &>>$LOG_FILE_NAME
-    VALIDATE $? "Mysql Installation"
-
-else
-    echo -e " Mysql Installed $Y already $N"
-fi
+for package in $@
+do
+    dnf list installed $package &>>$LOG_FILE_NAME
+    if [ $? -ne 0 ]
+    then
+        dnf install $package -y &>>$LOG_FILE_NAME
+        VALIDATE $? "installing $package"
+    else
+        echo -e " Mysql Installed $Y already $N"
+    fi
+done
 
 ###############
 #     Git Pending
