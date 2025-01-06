@@ -42,3 +42,4 @@ then
     echo "files to delete: $FILES"
 else
     echo "  files not foung older than $DAYS"
+fi
