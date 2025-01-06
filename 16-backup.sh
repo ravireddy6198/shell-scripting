@@ -10,7 +10,7 @@ N="\e[0m"
 SOURCE_DIR=$1
 DEST_DIR=$2
 
-DAYS=&{3:-14}
+DAYS=${3:-14}
 
 LOGS_FOLDER="/var/log/expense-logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1 )
@@ -26,4 +26,9 @@ USAGE(){
 if [ $# -lt 2 ]
 then
     USAGE
+fi
+
+if [ ! -d $SOURCE_DIR ]
+then
+    echo -e "$SOURCE_DIR does not exist"
 fi
