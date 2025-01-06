@@ -42,6 +42,19 @@ then
     echo "files to delete: $FILES"
     ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
     find /home/ec2-user/app-logs -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
+    if [ -f "$ZIP_FILE" ]
+    then
+         echo -e "Successfully created zip file for files older than $DAYS"
+        while read -r filepath # here filepath is the variable name, you can give any name
+        do
+            echo "Deleting file: $filepath" &>>$LOG_FILE_NAME
+            rm -rf $filepath
+            echo "Deleted file: $filepath"
+        done <<< $ZIP_FILE
+    else
+        echo -e "$R Error:: $N Failed to create ZIP file "
+        exit 1
+    fi
 else
     echo "  files not foung older than $DAYS"
 fi
