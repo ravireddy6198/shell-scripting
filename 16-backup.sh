@@ -32,3 +32,7 @@ if [ ! -d $SOURCE_DIR ]
 then
     echo -e "$SOURCE_DIR does not exist"
 fi
+
+FILES=$(find /home/ec2-user/app-logs -name "*.log" -mtime +$DAYS)
+
+echo "files to delete: $FILES"
