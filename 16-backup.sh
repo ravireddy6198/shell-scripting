@@ -37,9 +37,11 @@ FILES=$(find /home/ec2-user/app-logs -name "*.log" -mtime +$DAYS)
 
 
 
-if [ -n "$FILES" ]  # not empty
+if [ -n "$FILES" ]  # not empty  ( if there are file to zip)
 then
     echo "files to delete: $FILES"
+    ZIP_FILE="$DEST_DIR/app-logs-$TIMESTAMP.zip"
+    find /home/ec2-user/app-logs -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_FILE"
 else
     echo "  files not foung older than $DAYS"
 fi
