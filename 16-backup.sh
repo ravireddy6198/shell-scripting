@@ -28,11 +28,17 @@ then
     USAGE
 fi
 
-if [ ! -d $SOURCE_DIR ]
+if [ ! -d "$SOURCE_DIR" ]
 then
     echo -e "$SOURCE_DIR does not exist"
 fi
 
 FILES=$(find /home/ec2-user/app-logs -name "*.log" -mtime +$DAYS)
 
-echo "files to delete: $FILES"
+
+
+if [ -n "$FILES" ]  # not empty
+then
+    echo "files to delete: $FILES"
+else
+    echo "  files not foung older than $DAYS"
