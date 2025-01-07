@@ -13,9 +13,9 @@ do
     #echo "$PARTITION   : $USAGE"
     if [ $USAGE -ge $DISK_THRESHOLD ]
     then  
-        MSG+="$PARTITION exceeds :$USAGE + \n "
+        MSG+="$PARTITION exceeds :$USAGE \n "
     fi
 done <<< $DISK_USAGE
 
-echo -e "$MSG"
+echo -e "$MSG" |mutt -s "Hight DISK USAGE" ravireddy6198@gmail.com
 
