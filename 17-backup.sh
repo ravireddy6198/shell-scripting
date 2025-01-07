@@ -13,9 +13,9 @@ do
     #echo "$PARTITION   : $USAGE"
     if [ $USAGE -ge $DISK_THRESHOLD ]
     then  
-        MSG+="$PARTITION exceeds :$USAGE + /n "
+        MSG+="$PARTITION exceeds :$USAGE + \n "
     fi
 done <<< $DISK_USAGE
 
-echo "$MSG"
+echo -e "$MSG"
 
